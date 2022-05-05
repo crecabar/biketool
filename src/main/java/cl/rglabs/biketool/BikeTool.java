@@ -1,11 +1,11 @@
 /**
  *
  */
-package cl.rglabs;
+package cl.rglabs.biketool;
 
-import cl.rglabs.domain.entities.Bike;
-import cl.rglabs.domain.entities.User;
-import cl.rglabs.domain.services.BikeBuilder;
+import cl.rglabs.biketool.core.domain.entities.Bike;
+import cl.rglabs.biketool.core.domain.entities.User;
+import cl.rglabs.biketool.core.domain.services.BikeBuilder;
 
 import java.text.DateFormat;
 import java.text.ParseException;

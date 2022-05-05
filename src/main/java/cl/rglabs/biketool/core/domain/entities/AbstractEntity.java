@@ -1,7 +1,7 @@
 /**
  *
  */
-package cl.rglabs.domain.entities;
+package cl.rglabs.biketool.core.domain.entities;
 
 import java.util.UUID;
 
