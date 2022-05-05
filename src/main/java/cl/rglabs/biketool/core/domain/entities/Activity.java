@@ -9,11 +9,22 @@ public class Activity extends AbstractModel{
 
     protected Date endedAt;
 
+    protected long elapsedTime;
+
+    protected long movingTime;
+
     protected String type;
 
     protected double distance;
 
     protected double height;
+
+    public Activity() {
+        this.elapsedTime = 0;
+        this.startedAt = null;
+        this.endedAt = null;
+        this.movingTime = 0;
+    }
 
     public Date getStartedAt() {
         return startedAt;
@@ -31,14 +42,40 @@ public class Activity extends AbstractModel{
         this.endedAt = endedAt;
     }
 
-    public String activityTime() {
+    public long getElapsedTime() {
+        return elapsedTime;
+    }
+
+    public void setElapsedTime(long elapsedTime) {
+        this.elapsedTime = elapsedTime;
+    }
+
+    public long getMovingTime() {
+        return movingTime;
+    }
+
+    public void setMovingTime(long movingTime) {
+        this.movingTime = movingTime;
+    }
+
+    public void addElapsedTime() {
+        this.endedAt = new Date(this.startedAt.getTime() + (this.elapsedTime * 1000));
+    }
+
+    public String activityTime() throws NullPointerException {
+        if (this.endedAt == null && this.startedAt == null && this.elapsedTime == 0) {
+            throw new NullPointerException();
+        } else if (this.endedAt == null && this.elapsedTime == 0) {
+            throw new NullPointerException();
+        } else if (this.endedAt == null) this.addElapsedTime();
+
         long diff = this.endedAt.getTime() - this.startedAt.getTime();
         long hours = TimeUnit.MILLISECONDS.toHours(diff) % 24;
         long minutes = TimeUnit.MILLISECONDS.toMinutes(diff) % 60;
         long seconds = TimeUnit.MILLISECONDS.toSeconds(diff) % 60;
 
-        return (hours < 10 ? "0" + hours : hours ) +
-            ":" + (minutes < 10 ? "0" + minutes : minutes ) +
+        return (hours < 10 ? "0" + hours : hours) +
+            ":" + (minutes < 10 ? "0" + minutes : minutes) +
             ":" + (seconds < 10 ? "0" + seconds : seconds);
     }
 
