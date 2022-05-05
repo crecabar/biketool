@@ -1,4 +1,4 @@
-package cl.rglabs.domain.entities;
+package cl.rglabs.biketool.core.domain.entities;
 
 import java.time.Instant;
 import java.util.Date;
@@ -19,6 +19,10 @@ public class User extends AbstractModel{
     private double height;
 
     private String nationality;
+
+    private Bike[] bikes;
+
+    private Activity[] activities;
 
     public String getName() {
         return name;
@@ -80,5 +84,21 @@ public class User extends AbstractModel{
 
     public void setNationality(String nationality) {
         this.nationality = nationality;
+    }
+
+    public Bike[] getBikes() {
+        return bikes;
+    }
+
+    public void setBikes(Bike[] bikes) {
+        this.bikes = bikes;
+    }
+
+    public Activity[] getActivities() {
+        return activities;
+    }
+
+    public void setActivities(Activity[] activities) {
+        this.activities = activities;
     }
 }

@@ -1,7 +1,6 @@
-package cl.rglabs.domain.entities;
+package cl.rglabs.biketool.core.domain.entities;
 
 import java.util.Date;
-import java.util.UUID;
 
 public abstract class AbstractTimeStamplableEntity extends AbstractEntity implements TimeStampableInterface{
 
