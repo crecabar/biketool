@@ -5,7 +5,7 @@ package cl.rglabs.biketool;
 
 import cl.rglabs.biketool.core.domain.entities.Bike;
 import cl.rglabs.biketool.core.domain.entities.User;
-import cl.rglabs.biketool.core.domain.services.BikeBuilder;
+import cl.rglabs.biketool.core.domain.factories.BikeFactory;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -19,7 +19,7 @@ import java.util.Date;
 public class BikeTool
 {
     public static void main(String[] args) {
-        Bike bike = (new BikeBuilder()).createBike();
+        Bike bike = (new BikeFactory()).createBike();
         User user = new User();
         DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         Date now = Date.from(Instant.now());
