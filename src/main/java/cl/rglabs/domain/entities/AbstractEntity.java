@@ -3,6 +3,8 @@
  */
 package cl.rglabs.domain.entities;
 
+import java.util.UUID;
+
 /**
  * 
  */
@@ -12,20 +14,20 @@ public abstract class AbstractEntity
     /**
      * 
      */
-    protected String UUID;
+    protected UUID uuid;
 
     /**
      * 
      */
-    public AbstractEntity(String uUID) {
-        UUID = uUID;
+    public AbstractEntity(UUID uuid) {
+        this.uuid = uuid;
     }
 
     /**
      * 
      */
-    protected AbstractEntity setUUID(String UUID) {
-        this.UUID = UUID;
+    protected AbstractEntity setUuid(UUID uuid) {
+        this.uuid = uuid;
 
         return this;
     }
@@ -33,7 +35,7 @@ public abstract class AbstractEntity
     /**
      * 
      */
-    protected String getUUID() {
-        return this.UUID;
+    protected UUID getUuid() {
+        return this.uuid;
     }
 }
