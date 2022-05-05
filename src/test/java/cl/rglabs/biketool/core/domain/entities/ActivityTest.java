@@ -1,5 +1,6 @@
 package cl.rglabs.biketool.core.domain.entities;
 
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.text.DateFormat;
@@ -10,15 +11,19 @@ import static org.junit.Assert.*;
 
 public class ActivityTest {
 
+    static String isoDatePattern;
+    static DateFormat formatter;
+    @BeforeClass
+    public static void setUpTests() {
+        isoDatePattern = "yyyy-MM-dd'T'HH:mm:ss'Z'";
+        formatter = new SimpleDateFormat(isoDatePattern);
+    }
+
     @Test
     public void activityTime() throws ParseException {
         Activity activity = new Activity();
-        String isoDatePattern = "yyyy-MM-dd'T'HH:mm:ss'Z'";
-        DateFormat formatter = new SimpleDateFormat(isoDatePattern);
 
         activity.setStartedAt(formatter.parse("2022-05-04T11:00:00Z"));
-        //activity.setEndedAt(formatter.parse("2022-05-04T11:10:00Z"));
-        //assertEquals("00:10:00", activity.activityTime());
         assertThrows(NullPointerException.class, activity::activityTime);
 
         activity.setStartedAt(formatter.parse("2022-05-04T11:00:00Z"));
@@ -37,8 +42,6 @@ public class ActivityTest {
     @Test
     public void addElapsedTime() throws ParseException {
         Activity activity = new Activity();
-        String isoDatePattern = "yyyy-MM-dd'T'HH:mm:ss'Z'";
-        DateFormat formatter = new SimpleDateFormat(isoDatePattern);
 
         activity.setStartedAt(formatter.parse("2022-05-04T11:00:00Z"));
         activity.setElapsedTime(600);
