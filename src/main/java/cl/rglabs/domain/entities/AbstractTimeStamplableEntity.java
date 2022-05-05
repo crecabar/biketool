@@ -5,30 +5,30 @@ import java.util.UUID;
 
 public abstract class AbstractTimeStamplableEntity extends AbstractEntity implements TimeStampableInterface{
 
-    /**
-     * @param uuid
-     */
-    public AbstractTimeStamplableEntity(UUID uuid) {
-        super(uuid);
+    protected Date createdAt;
+    protected Date modifiedAt;
+
+    public AbstractTimeStamplableEntity() {
+        super();
     }
 
     @Override
     public Date getCreatedAt() {
-        return null;
+        return this.createdAt;
     }
 
     @Override
     public Date getModifiedAt() {
-        return null;
+        return this.modifiedAt;
     }
 
     @Override
     public void setCreatedAt(Date createdAt) {
-
+        this.createdAt = createdAt;
     }
 
     @Override
     public void setModifiedAt(Date modifiedAt) {
-
+        this.modifiedAt = modifiedAt;
     }
 }

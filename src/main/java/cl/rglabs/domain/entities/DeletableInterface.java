@@ -15,4 +15,6 @@ public interface DeletableInterface
      * @param deletedAt
      */
     public void setDeletedAt(Date deletedAt);
+
+    public boolean isDeleted();
 }

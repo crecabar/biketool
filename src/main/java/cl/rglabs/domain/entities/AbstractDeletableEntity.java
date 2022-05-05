@@ -5,20 +5,19 @@ import java.util.UUID;
 
 public abstract class AbstractDeletableEntity extends AbstractEntity implements DeletableInterface {
 
-    /**
-     * @param uuid
-     */
-    public AbstractDeletableEntity(UUID uuid) {
-        super(uuid);
+    protected Date deletedAt;
+
+    public AbstractDeletableEntity() {
+        super();
     }
 
     @Override
     public Date getDeletedAt() {
-        return null;
+        return this.deletedAt;
     }
 
     @Override
     public void setDeletedAt(Date deletedAt) {
-
+        this.deletedAt = deletedAt;
     }
 }

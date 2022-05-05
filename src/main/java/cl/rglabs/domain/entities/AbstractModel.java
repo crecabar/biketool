@@ -1,44 +1,54 @@
 package cl.rglabs.domain.entities;
 
+import java.time.Instant;
 import java.util.Date;
-import java.util.UUID;
 
 public abstract class AbstractModel extends AbstractEntity implements TimeStampableInterface, DeletableInterface{
 
-    /**
-     * @param uuid
-     */
-    public AbstractModel(UUID uuid) {
-        super(uuid);
+    protected Date createdAt;
+    protected Date modifiedAt;
+    protected Date deletedAt;
+
+    public AbstractModel() {
+        super();
+        Date now = Date.from(Instant.now());
+        this.createdAt = now;
+        this.modifiedAt = now;
+        this.deletedAt = null;
     }
 
     @Override
     public Date getDeletedAt() {
-        return null;
+        return this.deletedAt;
     }
 
     @Override
     public void setDeletedAt(Date deletedAt) {
+        this.deletedAt = deletedAt;
+    }
 
+    @Override
+    public boolean isDeleted() {
+        return (this.deletedAt == null);
     }
 
     @Override
     public Date getCreatedAt() {
-        return null;
+        return this.createdAt;
     }
 
     @Override
     public Date getModifiedAt() {
-        return null;
+        return this.modifiedAt;
     }
 
     @Override
     public void setCreatedAt(Date createdAt) {
-
+        this.createdAt = createdAt;
     }
 
     @Override
     public void setModifiedAt(Date modifiedAt) {
-
+        this.modifiedAt = modifiedAt;
     }
 }

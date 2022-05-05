@@ -3,7 +3,6 @@ package cl.rglabs.domain.entities;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
-import java.util.UUID;
 
 public class Bike extends AbstractModel{
 
@@ -22,14 +21,10 @@ public class Bike extends AbstractModel{
 
     protected int startMileage;
 
-    /**
-     * @param uuid
-     */
-    public Bike(UUID uuid) {
-        super(uuid);
+    public Bike() {
+        super();
         components = new HashSet<>();
     }
-
 
     public void addComponent(Component component) {
         this.components.add(component);
